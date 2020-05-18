@@ -2,20 +2,41 @@ import React, { Component } from 'react';
 import Row from './Row';
 import _ from 'lodash';
 
+const defaultState = {
+  playing: false,
+  activeRow: 49,
+  activeSize: 9,
+  totalFloors: 0,
+  direction: 'left',
+  field: makeStartBoard(50, 15, 9),
+  score: 0,
+  speed: 150,
+  gameOver: false,
+};
+
+const sliceFieldPartToShow = (field) =>
+  field.length >= 85 ? field.slice(35, 85) : field.slice(-50);
+
+const setSpeed = (totalFloors) => {
+  // if (totalFloors <= 30) return -20;
+  switch (true) {
+    case totalFloors <= 20:
+      return -20;
+    case totalFloors <= 40:
+      return -15;
+    case totalFloors <= 60:
+      return -5;
+    case totalFloors > 60:
+      return -3;
+    default:
+      return totalFloors;
+  }
+};
+
 export default class Game extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      playing: false,
-      activeRow: 49,
-      activeSize: 9,
-      totalFloors: 0,
-      direction: 'left',
-      field: makeStartBoard(50, 15, 9),
-      score: 0,
-      speed: 150,
-    };
-
+    this.state = defaultState;
     this.interval = null;
   }
 
@@ -23,34 +44,58 @@ export default class Game extends Component {
     document.body.onkeyup = (e) => {
       if (e.keyCode === 32) {
         if (!this.state.playing) {
-          this.setState({ playing: true });
+          this.setState({ ...defaultState, playing: true });
           this.tick();
         } else {
-          this.setState({ activeRow: this.state.activeRow - 1 }, () => {
-            const newField = fillRow(this.state.field, this.state.activeRow);
-            this.setState({ field: newField }, () => {
-              const newSize = findSize(this.state.field[this.state.activeRow]);
-              this.setState({
-                activeSize: newSize,
-                totalFloors: this.state.totalFloors + 1,
-              });
-              if (
-                this.state.totalFloors > 0 &&
-                !(this.state.totalFloors % 10)
-              ) {
-                this.setState({ speed: this.state.speed - 20 }, () => {
-                  clearInterval(this.interval);
-                  this.interval = setInterval(
-                    this.movingIntervalCallback.bind(this),
-                    this.state.speed
+          //experimental
+          const fieldCopy = _.cloneDeep(this.state.field);
+          fieldCopy.unshift(new Array(15).fill(false));
+          this.setState(
+            { field: fieldCopy, activeRow: this.state.activeRow + 1 },
+            () => {
+              this.setState({ activeRow: this.state.activeRow - 1 }, () => {
+                const newField = fillRow(
+                  this.state.field,
+                  this.state.activeRow
+                );
+                this.setState({ field: newField }, () => {
+                  const newSize = findSize(
+                    this.state.field[this.state.activeRow]
                   );
+                  this.setState({
+                    activeSize: newSize,
+                    totalFloors: this.state.totalFloors + 1,
+                  });
+                  if (
+                    this.state.totalFloors > 0 &&
+                    !(this.state.totalFloors % 10)
+                  ) {
+                    console.log(this.state.totalFloors);
+                    this.setState(
+                      {
+                        speed:
+                          this.state.speed + setSpeed(this.state.totalFloors),
+                      },
+                      () => {
+                        clearInterval(this.interval);
+                        this.interval = setInterval(
+                          this.movingIntervalCallback.bind(this),
+                          this.state.speed
+                        );
+                      }
+                    );
+                  }
                 });
-              }
-            });
-          });
+              });
+            }
+          );
         }
       }
     };
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   movingIntervalCallback() {
@@ -65,6 +110,10 @@ export default class Game extends Component {
       this.setState({ direction: 'left' });
     }
     const { field, activeRow, direction, activeSize } = this.state;
+    if (!activeSize) {
+      this.setState({ gameOver: true, playing: false });
+      clearInterval(this.interval);
+    }
     const newField = moveDots(field, activeRow, direction, activeSize);
     this.setState({ field: newField });
   }
@@ -78,13 +127,15 @@ export default class Game extends Component {
 
   stop() {
     clearInterval(this.interval);
+    console.log(this.state.field);
   }
 
   render() {
     return (
       <>
+        {this.state.gameOver ? <h1>Game Over</h1> : null}
         <div className="cont">
-          {this.state.field.map((el, idx) => {
+          {sliceFieldPartToShow(this.state.field).map((el, idx) => {
             return <Row row={el} key={idx} />;
           })}
         </div>
@@ -103,7 +154,7 @@ export default class Game extends Component {
         </h1>
         <span>
           <h1 style={{ color: 'white', fontSize: '70px' }}>
-            {this.state.speed}
+            {150 - this.state.speed}
           </h1>
         </span>
       </>
