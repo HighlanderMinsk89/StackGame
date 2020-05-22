@@ -1,5 +1,25 @@
 import _ from "lodash";
 
+export const getUser = () => {
+  return JSON.parse(localStorage.getItem("user"));
+};
+
+const getUserCountry = async () => {
+  try {
+    let response = await fetch("https://ipapi.co/json/");
+    let data = await response.json();
+    return { city: data.city, country: data.country_name };
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const setUserLS = async (userName) => {
+  const { city, country } = await getUserCountry();
+  const newUser = { name: userName, country, city };
+  localStorage.setItem("user", JSON.stringify(newUser));
+};
+
 export const makeStartBoard = (height, width, size) => {
   const gameBoard = [];
   for (let i = 0; i < height; i++) {

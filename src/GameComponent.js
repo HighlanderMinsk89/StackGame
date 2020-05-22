@@ -3,7 +3,7 @@ import Row from "./Row";
 import * as utilities from "./utilities.js";
 import { cloneDeep } from "lodash";
 
-export default class Game extends Component {
+export default class GameComponent extends Component {
   constructor(props) {
     super(props);
     this.state = utilities.defaultState;
