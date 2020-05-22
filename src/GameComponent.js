@@ -23,7 +23,7 @@ export default class GameComponent extends Component {
       if (e.keyCode === 32) {
         if (!this.state.playing) {
           //to start moving
-          this.setState({ playing: true });
+          this.setState({ playing: true, speed: 150 });
           this.tick();
         } else {
           //add new empty row in front on every tick
@@ -131,41 +131,27 @@ export default class GameComponent extends Component {
     );
   }
 
-  stop() {
-    clearInterval(this.interval);
-  }
-
   render() {
     return (
-      <>
+      <div className="parent-cont">
         {this.state.gameOver ? <h1>Game Over</h1> : null}
         <div className="cont">
           {utilities.sliceFieldPartToShow(this.state.field).map((el, idx) => {
             return <Row row={el} key={idx} />;
           })}
         </div>
-
-        <button
-          className="button"
-          onClick={() => {
-            this.stop();
-          }}
-        >
-          stop
-        </button>
-        <h1 style={{ color: "white", fontSize: "40px" }}>{this.state.score}</h1>
-        <h1 style={{ color: "white", fontSize: "40px" }}>
-          {this.state.totalFloors} Floors
-        </h1>
-        <span>
+        <div className="stats">
           <h1 style={{ color: "white", fontSize: "40px" }}>
-            Speed: {150 - this.state.speed}
+            {this.state.totalFloors} Floors
+          </h1>
+          <h1 style={{ color: "white", fontSize: "40px" }}>
+            Speed: {this.state.speed ? 200 - this.state.speed : 0} m/h
           </h1>
           <h3 style={{ color: "white", fontSize: "40px" }}>
             Bonus: {this.state.bonusScore}
           </h3>
-        </span>
-      </>
+        </div>
+      </div>
     );
   }
 }

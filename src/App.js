@@ -12,12 +12,21 @@ function App() {
     if (user) setUser(user);
   }, []);
 
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   return (
     <div className="App">
-      <h3>Gamuxa</h3>
-      {user ? <h2>HI, {user.name}</h2> : null}
-      <GameComponent />
-      {!user ? <RegisterUserComponent user={user} setUser={setUser} /> : null}
+      <h3 className="game-title">STACK IT!</h3>
+      {user ? (
+        <div>
+          <h2>HI, {user.name}</h2>
+          <GameComponent />
+        </div>
+      ) : (
+        <RegisterUserComponent user={user} setUser={setUser} />
+      )}
     </div>
   );
 }

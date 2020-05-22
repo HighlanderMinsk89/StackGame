@@ -18,6 +18,11 @@ code {
 
 }
 
+.parent-cont {
+  display: flex;
+  justify-content: center;
+}
+
 .cont {
   display: flex;
   justify-content: center;
@@ -27,4 +32,10 @@ code {
 .row {
   justify-content: center;
   display: flex;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3rem;
 }

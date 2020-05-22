@@ -46,8 +46,7 @@ export const defaultState = {
   totalFloors: 0,
   direction: "left",
   field: makeStartBoard(50, 15, 7),
-  score: 0,
-  speed: 150,
+  speed: 0,
   gameOver: false,
   bonusScore: 0,
 };
