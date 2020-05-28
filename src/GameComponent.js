@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Row from "./Row";
 import * as utilities from "./utilities.js";
 import { cloneDeep } from "lodash";
+import GameResultComponent from "./GameResultComponent";
 
 export default class GameComponent extends Component {
   constructor(props) {
@@ -112,7 +113,11 @@ export default class GameComponent extends Component {
     }
     const { field, activeRow, direction, activeSize } = this.state;
     if (!activeSize) {
-      this.setState({ gameOver: true, playing: false });
+      this.setState({
+        gameOver: true,
+        playing: false,
+        totalFloors: this.state.totalFloors - 1,
+      });
       clearInterval(this.interval);
     }
     const newField = utilities.moveDots(
@@ -131,27 +136,48 @@ export default class GameComponent extends Component {
     );
   }
 
+  setGameOver() {
+    this.setState(utilities.defaultState);
+  }
+
   render() {
+    const {
+      totalFloors,
+      speed,
+      bonusScore,
+      playing,
+      gameOver,
+      field,
+    } = this.state;
     return (
-      <div className="parent-cont">
-        {this.state.gameOver ? <h1>Game Over</h1> : null}
-        <div className="cont">
-          {utilities.sliceFieldPartToShow(this.state.field).map((el, idx) => {
-            return <Row row={el} key={idx} />;
-          })}
+      <>
+        <div className="parent-cont">
+          <div className="cont">
+            {utilities.sliceFieldPartToShow(field).map((el, idx) => {
+              return <Row row={el} key={idx} />;
+            })}
+          </div>
+          <div className="stats">
+            <h1>Floors: {totalFloors}</h1>
+            <h1>Speed: {speed ? 200 - speed : 0} m/h</h1>
+            <h3>Bonus: {bonusScore}</h3>
+          </div>
         </div>
-        <div className="stats">
-          <h1 style={{ color: "white", fontSize: "40px" }}>
-            {this.state.totalFloors} Floors
-          </h1>
-          <h1 style={{ color: "white", fontSize: "40px" }}>
-            Speed: {this.state.speed ? 200 - this.state.speed : 0} m/h
-          </h1>
-          <h3 style={{ color: "white", fontSize: "40px" }}>
-            Bonus: {this.state.bonusScore}
-          </h3>
-        </div>
-      </div>
+        {!playing ? (
+          <div className="message-start font">
+            Press Spacebar to start the game and stack the blocks! <br></br>
+            Stack 5 blocks perfectly in a row to expand your block back!
+          </div>
+        ) : null}
+        {gameOver ? (
+          <GameResultComponent
+            currentResult={{ totalFloors, field, user: this.props.user }}
+            setGameOver={() => {
+              this.setGameOver();
+            }}
+          />
+        ) : null}
+      </>
     );
   }
 }

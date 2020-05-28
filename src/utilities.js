@@ -134,3 +134,56 @@ export const findSize = (activeRow) =>
   activeRow.reduce((accum, val) => {
     return val ? (accum += 1) : accum;
   }, 0);
+
+export const calculateAndSaveResults = (fetchedResults, currentResult) => {
+  let rank;
+  let newLeaderBoard = fetchedResults || [];
+  newLeaderBoard = newLeaderBoard.slice(0, 100);
+  const slicedField = currentResult.field.slice(-currentResult.totalFloors);
+  const newRecord = {
+    totalFloors: currentResult.totalFloors,
+    field: slicedField,
+    user: currentResult.user,
+  };
+
+  if (
+    newLeaderBoard.length >= 100 &&
+    newLeaderBoard[newLeaderBoard.length - 1].totalFloors >=
+      newRecord.totalFloors
+  ) {
+    const top3 = newLeaderBoard.slice(0, 3);
+    return { rank: false, top3, newRecord };
+  }
+
+  newLeaderBoard.push(newRecord);
+  newLeaderBoard.sort((a, b) => b.totalFloors - a.totalFloors);
+  rank = newLeaderBoard.indexOf(newRecord) + 1;
+  fetch("https://stack-it-73fd3.firebaseio.com/records.json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newLeaderBoard),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.error("Error", err));
+
+  const top3 = newLeaderBoard.slice(0, 3);
+  return { rank, top3, newRecord };
+};
+
+export const generateResultMessage = (rank) => {
+  if (!rank) {
+    return ":( You Are Not in TOP 100. Proove You Can Do Better!";
+  } else if (rank === 1) {
+    return "WOW! A New CHAMPION Is Here! Congratulations!";
+  } else if (rank === 2 || rank === 3) {
+    return "TOP 3 in the World! Nicely Done!";
+  } else if (rank > 3 && rank <= 10) {
+    return "Good Job! So Close to TOP 3!";
+  } else if (rank > 10 && rank <= 50) {
+    return "You Are in TOP 50! Well Done!";
+  } else {
+    return "TOP 100! All Construction Companies Are Proud of You!";
+  }
+};

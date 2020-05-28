@@ -25,10 +25,16 @@ export default function NameFormComponent({ user, setUser }) {
       <div className="modal-background"></div>
       <div className="modal-content" style={{ width: "25rem" }}>
         <div style={{ textAlign: "center" }}>
+          <h1
+            className="game-title"
+            style={{ margin: "0 0 5rem 0", fontSize: "60px" }}
+          >
+            STACK IT!
+          </h1>
           <div className="field">
             <div className="control">
               <input
-                className="input"
+                className="input font"
                 style={{ textAlign: "center" }}
                 type="text"
                 placeholder="Your name, please"
@@ -37,7 +43,7 @@ export default function NameFormComponent({ user, setUser }) {
             </div>
           </div>
           <button
-            className="button is-success is-small is-outlined"
+            className="button is-success is-small is-outlined font"
             disabled={disabled}
             onClick={onSubmit}
           >

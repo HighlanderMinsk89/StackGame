@@ -1,7 +1,7 @@
 import React from "react";
 
 const notActive = {
-  backgroundColor: "#272424af",
+  backgroundColor: "rgba(81, 94, 81, 0.514)",
   width: "1rem",
   height: "0.7rem",
   borderRadius: "10%",

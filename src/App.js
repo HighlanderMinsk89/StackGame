@@ -18,11 +18,14 @@ function App() {
 
   return (
     <div className="App">
-      <h3 className="game-title">STACK IT!</h3>
       {user ? (
-        <div>
-          <h2>HI, {user.name}</h2>
-          <GameComponent />
+        <div className="game">
+          <div className="header">
+            <div className="user-name">Let's go, {user.name}!</div>
+            <div className="game-title">STACK IT!</div>
+          </div>
+
+          <GameComponent user={user} />
         </div>
       ) : (
         <RegisterUserComponent user={user} setUser={setUser} />
