@@ -139,6 +139,16 @@ code {
   font-size: 30px;
 }
 
+.social-links {
+  position: absolute;
+  left: 0;
+  margin: 1rem;
+}
+
+.social-links>a {
+  margin-right: 0.5rem;
+}
+
 /* __________________Loading Spinner_________________________ */
 .lds-facebook {
   display: inline-block;
