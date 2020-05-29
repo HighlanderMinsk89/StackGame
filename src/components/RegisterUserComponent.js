@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { setUserLS, getUser } from "./utilities";
+import { setUserLS, getUser } from "../utilities";
 
 export default function NameFormComponent({ user, setUser }) {
   const [name, setName] = useState("");

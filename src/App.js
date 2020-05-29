@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import GameComponent from "./GameComponent";
-import RegisterUserComponent from "./RegisterUserComponent";
+import GameComponent from "./components/GameComponent";
+import RegisterUserComponent from "./components/RegisterUserComponent";
 import { getUser } from "./utilities";
 
 function App() {

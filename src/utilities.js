@@ -141,10 +141,12 @@ export const calculateAndSaveResults = (fetchedResults, currentResult) => {
     return { rank: false, top3, newRecord };
   }
 
+  let b = 25;
+
   newLeaderBoard.push(newRecord);
   newLeaderBoard.sort((a, b) => b.totalFloors - a.totalFloors);
   rank = newLeaderBoard.indexOf(newRecord) + 1;
-  fetch("https://stack-it-73fd3.firebaseio.com/records.json", {
+  fetch(`https://stack-it-73fd3.firebaseio.com/records.json?auth=${b}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

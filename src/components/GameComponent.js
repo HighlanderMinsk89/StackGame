@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Row from "./Row";
-import * as utilities from "./utilities.js";
+import * as utilities from "../utilities.js";
 import { cloneDeep } from "lodash";
 import GameResultComponent from "./GameResultComponent";
 
