@@ -43,6 +43,8 @@ code {
 }
 
 .game-title {
+  display: flex;
+  align-items: center;
   font-size: 50px;
   color: yellowgreen;
   margin-right: 6rem;
@@ -140,8 +142,8 @@ code {
 }
 
 .social-links {
-  position: absolute;
-  left: 0;
+  position: relative;
+  left: 1;
   margin: 1rem;
 }
 

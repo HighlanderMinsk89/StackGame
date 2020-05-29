@@ -17,12 +17,14 @@ function App() {
 
   return (
     <div className="App">
-      <SocialLinks />
       {user ? (
         <div className="game">
           <div className="header">
             <div className="user-name">Let's go, {user.name}!</div>
-            <div className="game-title">STACK IT!</div>
+            <div className="game-title">
+              <h1>STACK IT!</h1>
+              <SocialLinks />
+            </div>
           </div>
 
           <GameComponent user={user} />
