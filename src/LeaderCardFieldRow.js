@@ -10,9 +10,9 @@ export default function LeaderCardFieldRow({ blockHeight, row }) {
       }}
     >
       {row &&
-        row.map((tile, idx) => {
-          return <LeaderCardFieldRowTile key={idx} tile={tile} />;
-        })}
+        row.map((tile, idx) => (
+          <LeaderCardFieldRowTile key={idx} tile={tile} />
+        ))}
     </div>
   );
 }

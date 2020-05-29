@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function LeaderCardInfoComponent({ rank, record, index }) {
-  console.log("key", index);
   return (
     <div className="leader-info">
       <h1>Rank: {index ? index : rank ? rank : "100+"}</h1>

@@ -159,7 +159,7 @@ export default class GameComponent extends Component {
           </div>
           <div className="stats">
             <h1>Floors: {totalFloors}</h1>
-            <h1>Speed: {speed ? 200 - speed : 0} m/h</h1>
+            <h1>Speed: {speed ? 200 - speed : 0} mph</h1>
             <h3>Bonus: {bonusScore}</h3>
           </div>
         </div>

@@ -4,8 +4,6 @@ const notActive = {
   backgroundColor: "rgb(2, 17, 5)",
   height: `100%`,
   width: "6.66666667%",
-  //   borderRadius: "90%",
-  //   margin: "2px 2px 3px 2px",
 };
 const active = {
   backgroundColor: "yellowgreen",

@@ -1,8 +1,6 @@
 import _ from "lodash";
 
-export const getUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
-};
+export const getUser = () => JSON.parse(localStorage.getItem("user"));
 
 const getUserCountry = async () => {
   try {
@@ -71,16 +69,12 @@ export const setSpeed = (totalFloors) => {
 
 export const bonusCounter = (currentBonus, fullMatch) => {
   if (!fullMatch) return 0;
-  else {
-    if (currentBonus >= 5) return 1;
-    else return currentBonus + 1;
-  }
+  return currentBonus >= 5 ? 1 : currentBonus + 1;
 };
 
 export const moveDots = (field, activeRow, direction, size) => {
   const copy = _.cloneDeep(field);
   const row = copy[activeRow];
-
   let start = row.indexOf(true);
   let end = start + size - 1;
   if (direction === "left") {
@@ -90,7 +84,6 @@ export const moveDots = (field, activeRow, direction, size) => {
     row[end + 1] = true;
     row[start] = false;
   }
-
   return copy;
 };
 
@@ -123,17 +116,10 @@ export const determineFullMatch = (field, activeRow) => {
 };
 
 export const determineMatch = (prevRow, secondRow) =>
-  prevRow.map((dot, idx) => {
-    if (dot === true && dot === secondRow[idx]) {
-      return true;
-    }
-    return false;
-  });
+  prevRow.map((dot, idx) => dot === true && dot === secondRow[idx]);
 
 export const findSize = (activeRow) =>
-  activeRow.reduce((accum, val) => {
-    return val ? (accum += 1) : accum;
-  }, 0);
+  activeRow.reduce((accum, val) => (val ? (accum += 1) : accum), 0);
 
 export const calculateAndSaveResults = (fetchedResults, currentResult) => {
   let rank;

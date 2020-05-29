@@ -12,9 +12,7 @@ function App() {
     if (user) setUser(user);
   }, []);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   return (
     <div className="App">

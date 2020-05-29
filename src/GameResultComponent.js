@@ -4,7 +4,6 @@ import { generateResultMessage, calculateAndSaveResults } from "./utilities";
 
 export default function GameResultComponent({ currentResult, setGameOver }) {
   const [leadersTable, setLeadersTable] = useState(null);
-  console.log("currentResult: ", leadersTable);
 
   useEffect(() => {
     fetch("https://stack-it-73fd3.firebaseio.com/records.json")

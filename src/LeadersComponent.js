@@ -2,7 +2,6 @@ import React from "react";
 import LeaderCardComponent from "./LeaderCardComponent";
 
 export default function LeadersComponent({ leadersTable }) {
-  console.log(leadersTable);
   return (
     <div className="leaders-container">
       {leadersTable &&

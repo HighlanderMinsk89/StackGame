@@ -7,15 +7,13 @@ export default function LeaderCardField({ blockHeight, recordField, rank }) {
       className="leader-card-field"
       style={{
         height: "100%",
-        border: rank === false || rank ? "8px solid yellowgreen" : "",
+        border: rank === false || rank ? "8px solid #1934FF" : "",
       }}
     >
       {recordField &&
-        recordField.map((row, idx) => {
-          return (
-            <LeaderCardFieldRow row={row} blockHeight={blockHeight} key={idx} />
-          );
-        })}
+        recordField.map((row, idx) => (
+          <LeaderCardFieldRow row={row} blockHeight={blockHeight} key={idx} />
+        ))}
     </div>
   );
 }
