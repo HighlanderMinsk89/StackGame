@@ -25,12 +25,7 @@ export default function NameFormComponent({ user, setUser }) {
       <div className="modal-background"></div>
       <div className="modal-content modal-login">
         <div style={{ textAlign: "center" }}>
-          <h1
-            className="game-title"
-            style={{ margin: "0 0 5rem 0", fontSize: "60px" }}
-          >
-            STACK IT!
-          </h1>
+          <h1 className="game-title">STACK IT!</h1>
           <div className="field">
             <div className="control">
               <input
