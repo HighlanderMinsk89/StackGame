@@ -9,8 +9,8 @@ const active = {
   backgroundColor: "yellowgreen",
   height: `100%`,
   width: "6.66666667%",
-  boxShadow: "inset 0px 0px 3px 0.5px green",
-  border: "0.3px solid black",
+  border: "0.05px solid black",
+  padding: "0,05px",
 };
 
 export default function LeaderCardFieldRowTile({ tile }) {

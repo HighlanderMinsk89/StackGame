@@ -1,5 +1,8 @@
 html {
   background-color: rgb(2, 19, 19);
+  background-image: url("https://wallpaperaccess.com/full/1204960.jpg");
+  /* height: 100vh; */
+
 }
 
 body {
@@ -9,7 +12,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://wallpaperaccess.com/full/1204960.jpg");
 }
 
 code {
@@ -29,8 +31,9 @@ code {
 }
 
 .row {
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
+
 }
 
 .stats {
@@ -39,7 +42,7 @@ code {
   margin-left: 3rem;
   font-size: 40px;
   color: rgb(231, 238, 230);
-  width: 330px;
+  /* width: 330px; */
 }
 
 .game-title {
@@ -47,7 +50,7 @@ code {
   align-items: center;
   font-size: 50px;
   color: yellowgreen;
-  margin-right: 6rem;
+  /* margin-right: 6rem; */
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
@@ -60,24 +63,35 @@ code {
 
 .header {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .game {
   font-family: "Comic Sans MS", cursive, sans-serif;
   /* background-color: rgba(3, 46, 32, 0.24); */
-  min-width: 650px;
-  height: 100vh;
+  /* min-width: 650px; */
+  display: flex;
+  flex-direction: column;
+  max-height: 825px;
+  min-width: 705px;
 }
 
 .font {
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
+.modal-login {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 25%;
+  min-width: 230px;
+  min-height: 342px;
+}
+
 .message-start {
-  margin-top: 3rem;
+  margin-top: 1rem;
   text-align: center;
   color: rgb(44, 185, 23);
   font-size: 25px;
@@ -104,6 +118,8 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  min-height: 292px;
+  padding: 1px;
 }
 
 .leader-card-field-row {

@@ -153,9 +153,9 @@ export default class GameComponent extends Component {
       <>
         <div className="parent-cont">
           <div className="cont">
-            {utilities.sliceFieldPartToShow(field).map((el, idx) => {
-              return <Row row={el} key={idx} />;
-            })}
+            {utilities.sliceFieldPartToShow(field).map((el, idx) => (
+              <Row row={el} key={idx} />
+            ))}
           </div>
           <div className="stats">
             <h1>Floors: {totalFloors}</h1>

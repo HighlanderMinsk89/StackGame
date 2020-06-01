@@ -20,10 +20,10 @@ export default function NameFormComponent({ user, setUser }) {
   return (
     <div
       className="modal is-active"
-      style={{ justifyContent: "start", paddingTop: "15rem" }}
+      style={{ justifyContent: "start", paddingTop: "15%" }}
     >
       <div className="modal-background"></div>
-      <div className="modal-content" style={{ width: "25rem" }}>
+      <div className="modal-content modal-login">
         <div style={{ textAlign: "center" }}>
           <h1
             className="game-title"

@@ -23,7 +23,7 @@ export default function GameResultComponent({ currentResult, setGameOver }) {
       className="modal is-active"
       style={{
         justifyContent: "start",
-        paddingTop: "10rem",
+        paddingTop: "10%",
         textAlign: "center",
       }}
     >
@@ -33,12 +33,18 @@ export default function GameResultComponent({ currentResult, setGameOver }) {
       ></div>
       <div
         className="modal-content"
-        style={{ width: "100%", overflow: "initial" }}
+        style={{ width: "100%", overflow: "initial", maxHeight: "577px" }}
       >
         {loading ? (
           <LoadingSpinner />
         ) : (
-          <div style={{ padding: "2rem 0", backgroundColor: "black" }}>
+          <div
+            style={{
+              padding: "2rem 0",
+              backgroundColor: "black",
+              minHeight: "500px",
+            }}
+          >
             <div className="leaders-message">
               {leadersTable && generateResultMessage(leadersTable.rank)}
             </div>
