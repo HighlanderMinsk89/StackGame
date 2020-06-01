@@ -23,7 +23,7 @@ export default function GameResultComponent({ currentResult, setGameOver }) {
       className="modal is-active"
       style={{
         justifyContent: "start",
-        paddingTop: "10%",
+        paddingTop: "5%",
         textAlign: "center",
       }}
     >
@@ -33,7 +33,11 @@ export default function GameResultComponent({ currentResult, setGameOver }) {
       ></div>
       <div
         className="modal-content"
-        style={{ width: "100%", overflow: "initial", maxHeight: "577px" }}
+        style={{
+          width: "100%",
+          overflow: "initial",
+          maxHeight: "577px",
+        }}
       >
         {loading ? (
           <LoadingSpinner />
