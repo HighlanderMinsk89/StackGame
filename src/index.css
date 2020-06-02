@@ -2,7 +2,6 @@ html {
   background-color: rgb(2, 19, 19);
   background-image: url("https://wallpaperaccess.com/full/1204960.jpg");
   /* height: 100vh; */
-
 }
 
 body {
@@ -33,7 +32,6 @@ code {
 .row {
   justify-content: space-between;
   display: flex;
-
 }
 
 .stats {
@@ -48,10 +46,9 @@ code {
 .game-title {
   display: flex;
   justify-content: center;
-
+  align-items: center;
   font-size: 50px;
   color: yellowgreen;
-  margin-bottom: 3rem;
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
@@ -133,7 +130,7 @@ code {
   color: white;
 }
 
-.leader-info>h2 {
+.leader-info > h2 {
   font-size: 20px;
   color: yellowgreen;
 }
@@ -145,11 +142,11 @@ code {
   align-items: center;
 }
 
-.leader-info-user>h4 {
+.leader-info-user > h4 {
   font-size: 12px;
 }
 
-.leader-info-user>h3 {
+.leader-info-user > h3 {
   font-size: 20px;
 }
 
@@ -164,7 +161,7 @@ code {
   margin: 1rem;
 }
 
-.social-links>a {
+.social-links > a {
   margin-right: 0.5rem;
 }
 
