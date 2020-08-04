@@ -162,7 +162,7 @@ export const calculateAndSaveResults = (fetchedResults, currentResult) => {
 
 export const generateResultMessage = (rank) => {
   if (!rank) {
-    return ":( You Are Not in TOP 100. Proove You Can Do Better!";
+    return ":( You Are Not in TOP 100. Prove You Can Do Better!";
   } else if (rank === 1) {
     return "WOW! A New CHAMPION Is Here! Congratulations!";
   } else if (rank === 2 || rank === 3) {
