@@ -6,7 +6,9 @@ const getUserCountry = async () => {
   try {
     let response = await fetch("https://ipapi.co/json/");
     let data = await response.json();
-    return { city: data.city, country: data.country_name };
+    return data.city && data.country_name
+      ? { city: data.city, country: data.country_name }
+      : { city: "Unknown City", country: "Unknown" };
   } catch (error) {
     console.error(error);
   }
