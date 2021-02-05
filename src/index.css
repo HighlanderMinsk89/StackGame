@@ -54,7 +54,6 @@ code {
   align-items: center;
   font-size: 50px;
   color: yellowgreen;
-  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .user-name {
@@ -71,9 +70,6 @@ code {
 }
 
 .game {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  /* background-color: rgba(3, 46, 32, 0.24); */
-  /* min-width: 650px; */
   display: flex;
   flex-direction: column;
   max-height: 825px;
@@ -81,7 +77,6 @@ code {
 }
 
 .font {
-  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .modal-login {
