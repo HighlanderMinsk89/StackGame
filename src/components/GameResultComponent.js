@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import LeadersComponent from './LeadersComponent'
 import { generateResultMessage, calculateAndSaveResults } from '../utilities'
 import LoadingSpinner from './LoadingSpinner'
@@ -12,16 +12,26 @@ export default function GameResultComponent({
 
   const [loading, setLoading] = useState(true)
 
+  const mountedRef = useRef(true)
+
   useEffect(() => {
     fetch('https://stack-it-73fd3.firebaseio.com/records.json')
       .then((response) => response.json())
       .then((data) => {
         const leadersResult = calculateAndSaveResults(data, currentResult)
-        setLeadersTable(leadersResult)
-        setLoading(false)
+        if (mountedRef.current) {
+          setLeadersTable(leadersResult)
+          setLoading(false)
+        }
       })
       .catch((err) => console.error('Error', err))
   }, [currentResult])
+
+  useEffect(() => {
+    return () => {
+      mountedRef.current = false
+    }
+  }, [])
   return (
     <div
       className='modal is-active'

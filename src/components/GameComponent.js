@@ -129,15 +129,11 @@ export default class GameComponent extends Component {
         this.onTapOrSpace()
       }
     }
-    const gameComp = document.getElementsByClassName('jJvzOD')[0]
-    if (gameComp) {
-      gameComp.addEventListener('touchend', this.onTapOrSpace)
+    const gameTouchArea = document.getElementsByClassName('touch-area')[0]
+    if (gameTouchArea) {
+      gameTouchArea.addEventListener('touchend', this.onTapOrSpace)
     }
   }
-
-  // handleTouch() {
-  //   this.onTapOrSpace()
-  // }
 
   movingIntervalCallback() {
     if (this.state.field[this.state.activeRow][0]) {
@@ -185,7 +181,7 @@ export default class GameComponent extends Component {
     } = this.state
     return (
       <div style={{ position: 'relative', height: '100%' }}>
-        <ParentCont mobile={this.props.mobile}>
+        <ParentCont mobile={this.props.mobile} className='touch-area'>
           <Board>
             {utilities.sliceFieldPartToShow(field).map((el, idx) => (
               <Row row={el} key={idx} mobile={this.props.mobile} />
