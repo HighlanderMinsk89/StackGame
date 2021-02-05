@@ -1,16 +1,21 @@
 html {
   background-color: rgb(2, 19, 19);
   background-image: url("https://wallpaperaccess.com/full/1204960.jpg");
-  /* height: 100vh; */
+  height: 100%;
 }
 
 body {
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
 }
 
 code {
@@ -30,7 +35,7 @@ code {
 }
 
 .row {
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
 }
 
@@ -89,10 +94,13 @@ code {
 }
 
 .message-start {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   text-align: center;
   color: rgb(44, 185, 23);
-  font-size: 25px;
+  font-size: 20px;
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
 }
 
 .leaders-container {
@@ -152,17 +160,17 @@ code {
 
 .leaders-message {
   color: rgb(194, 230, 65);
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .social-links {
   position: relative;
   left: 1;
-  margin: 1rem;
+  /* margin: 1rem; */
 }
 
 .social-links > a {
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 /* __________________Loading Spinner_________________________ */
