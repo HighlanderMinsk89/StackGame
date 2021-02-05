@@ -130,8 +130,9 @@ export default class GameComponent extends Component {
       }
     }
     const gameComp = document.getElementsByClassName('jJvzOD')[0]
-    console.log(gameComp)
-    gameComp.addEventListener('touchend', this.onTapOrSpace)
+    if (gameComp) {
+      gameComp.addEventListener('touchend', this.onTapOrSpace)
+    }
   }
 
   // handleTouch() {
@@ -183,7 +184,7 @@ export default class GameComponent extends Component {
       field,
     } = this.state
     return (
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', height: '100%' }}>
         <ParentCont mobile={this.props.mobile}>
           <Board>
             {utilities.sliceFieldPartToShow(field).map((el, idx) => (
