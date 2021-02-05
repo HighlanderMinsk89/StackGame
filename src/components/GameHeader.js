@@ -5,11 +5,11 @@ import SocialLinks from './SocialLinks'
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   & h1 {
     font-size: ${(props) => (props.mobile ? '25px' : '40px')};
     color: yellowgreen;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
   }
 `
 

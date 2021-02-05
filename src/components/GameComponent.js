@@ -27,6 +27,7 @@ const Stats = styled.div`
 
   & p {
     color: #b1e6b5;
+    padding: 0 0.3em;
   }
 `
 
